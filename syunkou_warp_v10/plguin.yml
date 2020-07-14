@@ -1,0 +1,19 @@
+name: syunkou_warp
+main: syunkou\hikari
+author: ははっち
+version: 10
+api: 3.14.0
+load: POSTWORLD
+description: form形式の簡単ワープ
+commands:
+  sw:
+    description: "ワープメニューを開きます。"
+    useage: "/sw"
+  sewp:
+    description: "立っている地点をワープポイントにする"
+    useage: "/sewp [ワープ地点名] "
+    permisson: op
+  dewp:
+    description: "指定したワープポイントを削除"
+    useage: "/dewp [ワープ地点名]"
+    permisson: op
