@@ -26,10 +26,13 @@ class form implements Form {
 					$player->sendForm(new EditRepeatTimeForm());
 					break;
 				default:
+			}
+	}
+
 
  public function Serialize(): array 
  {
- 	$config=hikari::getInstance()->config
+ 	$config=hikari::$config;
  	$warps = $config->getAll(true);
     $buttons = [];
     $func = function($warp) {
