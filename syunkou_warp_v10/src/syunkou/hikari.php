@@ -16,10 +16,10 @@ use pocketmine\level\Position;
 class hikari extends PluginBase implements Listener
 {
 	/** @var hikari */
-	private static $instance
+	private static $instance;
 
 	/** @var Config */
-	private $config 
+	private $config; 
 
 
  public function onEnable()
@@ -77,7 +77,7 @@ class hikari extends PluginBase implements Listener
            return ture;
         }else{
           $sender->sendMessage("§d".$args[0]."という地点を削除しました。");
-          $this->config->remove($args[0])
+          $this->config->remove($args[0]);
           $this->config->save();
         }
         case "sw":
