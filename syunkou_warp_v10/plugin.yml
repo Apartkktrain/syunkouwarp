@@ -1,6 +1,6 @@
 name: syunkou_warp
 main: syunkou\hikari
-author: ははっち
+author: ははっち,yuiful
 version: 10
 api: 3.14.0
 load: POSTWORLD
