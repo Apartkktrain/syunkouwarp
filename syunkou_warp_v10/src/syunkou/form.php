@@ -6,7 +6,8 @@ use pocketmine\form\Form;
 use pocketmine\Player;
 
 
-class form implements Form {
+class form implements Form
+{
 	public function handleResponse(Player $player, $data): void {
 	if (is_null($data)) {
 				//close
@@ -30,17 +31,19 @@ class form implements Form {
 	}
 
 
- public function Serialize(): array 
- {
- 	$config=hikari::$config;
- 	$warps = $config->getAll(true);
-    $buttons = [];
-    $func = function($warp) {
-    $buttons[] = ["text" => $warp ];
+      public function Serialize(): array
+         {
+ 	         $config=hikari::$config;
+ 	         $warps = $config->getAll(true);
+ 	         $buttons = [];
+ 	         $func = function($warp)
+			 {
+			 	$buttons[] = ["text" => $warp ];
+
     };
-array_map($func,$warps);
-array_push(["text" => "キャンセル"],$buttons);
- return [
+             array_map($func,$warps);
+             array_push(["text" => "キャンセル"],$buttons);
+            return [
  	 "type" => "form",
  	 "title" => "§e§l瞬光ワープシステム",
  	 "content" => "§aワープしたい地点を選択してください",
@@ -49,7 +52,7 @@ array_push(["text" => "キャンセル"],$buttons);
  	              
 
 
- 	              ]
-
-
+ 	                  ],
+		 }
 }
+

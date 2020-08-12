@@ -40,62 +40,64 @@ class hikari extends PluginBase implements Listener
     }
     return self::$instance;
   }
- public function onCommand(CommandSender $sender, Command $command, string $label, array $args):bool
-  {
-      switch (strtolower($command->getName())) {
-      	case "sewp":
+     public function onCommand(CommandSender $sender, Command $command, string $label, array $args):bool
+	 {
+		 switch (strtolower($command->getName())) {
+			 case "sewp":
 
-      	if (!($sender instanceof Player)) {
-           $sender->sendMessage("§c入力エラー:§eこのコマンドはゲーム内でしか実行できません");
-           return true;
-           }
-        if(count($args) < 1){
-           $sender->sendMessage("§c入力エラー:地点名が書かれていません。\n§e使い方:/sewp [地点名]");
-           return true;
-           }
-        if (!self::$config->exists($args[0])) {
-           //レベルとプレイヤーposを取得
-           $level=$sender->getLevel();
-           $wpname=$level->getName();
-           $x=$sender->getFloorX();
-           $y=$sender->getFloorY();
-           $z=$sender->getFloorZ();
+				 if (!($sender instanceof Player))
+				 {
+					 $sender->sendMessage("§c入力エラー:§eこのコマンドはゲーム内でしか実行できません");
+				 }
+				 if (count($args) < 1) {
+					 $sender->sendMessage("§c入力エラー:地点名が書かれていません。\n§e使い方:/sewp [地点名]");
 
-           self::$config->set($args[0],array("Xp"=>$x,"Yp"=>$y,"Zp"=>$z,"levelp"=>$wpname));
-           self::$config->save();
-           $sender->sendMessage("§a".$args[0]."という地点を新規作成![§c".$x."§f,§b".$y."§f,§a".$z."level:§d".$wpname."§f]");
-           return true;
-          }else{
-          	$sender->sendMessage("§d".$args[0]."という地点はもうあります。");
-           return true;
-         }
-      break;
-        
+				 }
+				 if (!self::$config->exists($args[0])) {
+					 //レベルとプレイヤーposを取得
+					 $level = $sender->getLevel();
+					 $wpname = $level->getName();
+					 $x = $sender->getFloorX();
+					 $y = $sender->getFloorY();
+					 $z = $sender->getFloorZ();
 
-        case "dewp":
+					 self::$config->set($args[0], array("Xp" => $x, "Yp" => $y, "Zp" => $z, "levelp" => $wpname));
+					 self::$config->save();
+					 $sender->sendMessage("§a" . $args[0] . "という地点を新規作成![§c" . $x . "§f,§b" . $y . "§f,§a" . $z . "level:§d" . $wpname . "§f]");
 
-        if(!($sender instanceof Player)){
-           $sender->sendMessage("§c入力エラー:§eこのコマンドはゲーム内でしか実行できません");
-           return true;
-           }	
-        if(!self::$config->exists($args[0])) {
-           $sender->sendMessage("§c入力エラー:".$args[0]."という地点は存在しません。");	
-           return ture;
-        }else{
-          $sender->sendMessage("§d".$args[0]."という地点を削除しました。");
-          self::$config->remove($args[0]);
-          slef::$config->save();
-        }
-      break;
+				 } else {
+					 $sender->sendMessage("§d" . $args[0] . "という地点はもうあります。");
 
-        case "sw":
-        if(!($sender instanceof Player)){
-        	$sender->sendMessage("§c入力エラー:§eこのコマンドはゲーム内でしか実行できません");
-           return true;
-          }else{
+				 }
+				 return true;
+				 break;
 
-      }
-   break;
-   }
-  }
+
+			 case "dewp":
+				 if (!($sender instanceof Player)) {
+					 $sender->sendMessage("§c入力エラー:§eこのコマンドはゲーム内でしか実行できません");
+
+				 }
+				 if (!self::$config->exists($args[0])) {
+					 $sender->sendMessage("§c入力エラー:" . $args[0] . "という地点は存在しません。");
+				 } else {
+					 $sender->sendMessage("§d" . $args[0] . "という地点を削除しました。");
+					 self::$config->remove($args[0]);
+					 slef::$config->save();
+				 }
+				 return true;
+				 break;
+
+			 case "sw":
+				 if (!($sender instanceof Player))
+				 {
+					 $sender->sendMessage("§c入力エラー:§eこのコマンドはゲーム内でしか実行できません");
+
+				 } else {
+					 $sender->sendForm(new form());
+				 }
+				 return true;
+				 break;
+		 }
+	 }
  }
